@@ -19,3 +19,26 @@ pollutantmean <- function(directory, pollutant,id = 1:332){
   return(Our_mean <-  mean(df[,pollutant], na.rm = TRUE))
   
 }
+# Qn.2
+#Write a function that reads a directory full of files and reports the number of completely observed cases in each data file. 
+#The function should return a data frame where the first column is the name of the file and the second column is the number
+# of complete cases
+
+#read the dirrectory for files
+#find number of obs for each file
+#create dataframme with two colums , Name of file, Nobs
+
+#write function complete
+complete <- function(directory, id = 1:332){
+  #list files from directory
+  files <- list.files(directory, full.names = TRUE)
+  #create empty dataframe
+  df <- data.frame()
+  for(i in id){
+    idata<- read.csv(files[i], header = TRUE)
+    idata <- na.omit(idata)
+    Nobs <-nrow(idata)
+    df <- rbind(df, data.frame(i, Nobs))
+  }
+   return(df)
+}
