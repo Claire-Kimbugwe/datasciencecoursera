@@ -1,5 +1,10 @@
 # Qn 1
-
+How can one calculate the average miles per gallon (mpg) by number of cylinders in the car (cyl)?
+> library(datasets)
+> data(mtcars)
+> sapply(split(mtcars$mpg, mtcars$cyl), mean)
+       4        6        8 
+26.66364 19.74286 15.10000 
 
 # Q4.
 #load Mtcars from R datasets 
