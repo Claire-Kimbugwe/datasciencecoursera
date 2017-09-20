@@ -24,9 +24,8 @@ gtoken <- config(token = github_token)
 req <- GET(""https://api.github.com/users/jtleek/repos", gtoken)
 stop_for_status(req)
 content(req)
-json <- content(req)
-output <- jsonlite::fromJSON(toJSON(json))
-subset(output, name== "datasharing", select c(created_at)
+Out <- content(req)
+list(out[[12]]$name, out[[12]]$created_at)
 
 # OR:
 req <- with_config(gtoken, GET("https://api.github.com/users/jtleek/repos"))
